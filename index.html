@@ -220,6 +220,13 @@ body{
 </div>
 
   <!-- ==============================
+  一覧表示
+  ============================== -->
+  <div id="list" style="display:none;">
+
+  </div>
+
+  <!-- ==============================
   【カード】最初は非表示
   ============================== -->
   <div id="front" style="display:none;">
@@ -687,7 +694,7 @@ async function initApp() {
 
   header.style.display = "flex";
 
-  document.getElementById("front").style.display = "flex";
+  document.getElementById("list").style.display = "block";
 
   // 初回表示
   showCard();
