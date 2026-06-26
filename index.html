@@ -170,21 +170,6 @@ body{
   margin-right: 10px;  /* ←これ追加 */
 }
 
-#loading {
-  opacity: 1;
-  transition: opacity 0.2s ease;
-}
-
-#loading {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 1;
-  transition: opacity 0.2s ease;
-  z-index: 2000;
-}
-
 #settingBtn{
   margin-left:10px;
   font-size:25px;
@@ -233,13 +218,6 @@ body{
   </div>
 
 </div>
-
-  <!-- ==============================
-  【ロゴ】初回表示
-  ============================== -->
-  <div id="loading">
-    <img id="logoImg" style="width:200px;">
-  </div>
 
   <!-- ==============================
   【カード】最初は非表示
@@ -705,16 +683,7 @@ async function initApp() {
   // =========================
   // ローディング
   // =========================
-  await new Promise(r => setTimeout(r, 2000));
-
-  const loading = document.getElementById("loading");
   const header  = document.getElementById("header");
-
-  loading.style.opacity = "0";
-
-  await new Promise(r => setTimeout(r, 200));
-
-  loading.style.display = "none";
 
   header.style.display = "flex";
 
