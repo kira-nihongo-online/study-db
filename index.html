@@ -696,8 +696,12 @@ async function initApp() {
 
   document.getElementById("list").style.display = "block";
 
-  // 初回表示
-  showCard();
+  // 仮表示
+  document.getElementById("list").innerHTML = `
+  <div>わたし</div>
+  <div>あなた</div>
+  <div>あのひと</div>
+  `;
 
   isReady = true;
 
