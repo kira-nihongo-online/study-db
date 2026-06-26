@@ -13,6 +13,16 @@ body{
 
 #card{
   width:100%;
+  height:calc(100vh - 60px);
+  margin-top:20px;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;  /* ←追加 */
+  align-items:center;      /* ←追加 */
+
+  transform: translateY(40px);
+
 }
 
 #front, #back{
@@ -206,19 +216,55 @@ body{
 
 <div id="card">
 
-<!-- ===================== 上部ヘッダー ===================== -->
-<div id="header" style="display:flex;">
+  <!-- ===================== 上部ヘッダー ===================== -->
+<div id="header" style="display:none;">
 
   <div id="header-left">
-    <img id="headerLogo">
+   <img id="headerLogo">
   </div>
 
   <div id="header-center">
-    <span id="title">Study DB</span>
+   <span id="title"></span>
   </div>
 
   <div id="header-right">
+  <span id="progress"></span>
+   <button id="settingBtn">⚙</button>
   </div>
+
+</div>
+
+  <!-- ==============================
+  【ロゴ】初回表示
+  ============================== -->
+  <div id="loading">
+    <img id="logoImg" style="width:200px;">
+  </div>
+
+  <!-- ==============================
+  【カード】最初は非表示
+  ============================== -->
+  <div id="front" style="display:none;">
+    <div class="top">
+      <img id="meaningFront">
+    </div>
+    <div class="bottom">
+      <img id="jpImg" style="display:none;">
+    </div>
+  </div>
+
+  <div id="back" style="display:none;">
+    <div class="top">
+      <img id="meaningBack">
+    </div>
+    <div class="bottom">
+      <div id="thai"></div>
+      <div id="eng"></div>
+      <div id="memo"></div>
+    </div>
+  </div>
+
+  <button id="speakBtn">🔊</button>
 
 </div>
 
@@ -613,10 +659,15 @@ function updateTitle() {
 
   const titleEl = document.getElementById("title");
 
-  const card = cards[index];
+  if (!cards.length) {
+    titleEl.textContent = "Study DB";
+    return;
+  }
+
+  const card = cards[0];
 
   titleEl.textContent =
-    `${card.title} - ${card.lesson}`;
+    `Study DB | ${card.title} | ${card.lesson}`;
 
 }
 
@@ -626,9 +677,6 @@ function updateTitle() {
 function setHeaderLogo() {
 
   document.getElementById("headerLogo").src =
-    "トータルロゴ.png";
-
-  document.getElementById("logoImg").src =
     "トータルロゴ.png";
 
 }
