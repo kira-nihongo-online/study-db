@@ -264,8 +264,6 @@ body{
     </div>
   </div>
 
-  <button id="speakBtn">🔊</button>
-
 </div>
 
 <script>
@@ -680,38 +678,6 @@ function setHeaderLogo() {
     "トータルロゴ.png";
 
 }
-
-// ==============================
-// 手動音声
-// ==============================
-function playCurrentVoice(){
-
-  if(!cards.length) return;
-
-  const c = cards[index];
-
-  if(isFront){
-
-    Voice.speakJP(c.hira || "");
-
-  }else{
-
-    Voice.speakTH(c.thai || "");
-
-  }
-
-}
-
-// ==============================
-// 音声ボタン
-// ==============================
-document.getElementById("speakBtn").addEventListener("click", (e) => {
-
-  e.stopPropagation();
-
-  playCurrentVoice();
-
-});
 
 // ==============================
 // 設定
