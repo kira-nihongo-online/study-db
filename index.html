@@ -505,22 +505,26 @@ async function initApp() {
   window.focus();
 
   // ==============================
-  // 一覧表示（テスト：1件だけ）
+  // 一覧表示
   // ==============================
   function showList(){
 
-    if(!cards.length) return;
+    const listBody = document.getElementById("listBody");
 
-    const c = cards[0];
+    listBody.innerHTML = "";
 
-    document.getElementById("listBody").innerHTML = `
-      <tr>
-        <td>${c.hira || ""}</td>
-        <td>${c.kanji || ""}</td>
-        <td>${c.thai || ""}</td>
-        <td>${c.eng || ""}</td>
-      </tr>
-    `;
+    cards.forEach(c => {
+
+      listBody.innerHTML += `
+        <tr>
+          <td>${c.hira || ""}</td>
+          <td>${c.kanji || ""}</td>
+          <td>${c.thai || ""}</td>
+          <td>${c.eng || ""}</td>
+        </tr>
+      `;
+
+    });
 
   }
 
