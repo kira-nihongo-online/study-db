@@ -199,16 +199,6 @@ body{
 
 <body tabindex="0">
 
-<!-- ==============================
-
-一覧表示
-
-============================== -->
-
-<div id="list" style="display:none;">
-
-</div>
-
 <div id="card">
 
   <!-- ===================== 上部ヘッダー ===================== -->
@@ -228,6 +218,13 @@ body{
   </div>
 
 </div>
+
+  <!-- ==============================
+  一覧表示
+  ============================== -->
+  <div id="list" style="display:none;">
+
+  </div>
 
   <!-- ==============================
   【カード】最初は非表示
@@ -699,12 +696,8 @@ async function initApp() {
 
   document.getElementById("list").style.display = "block";
 
-  // 仮表示
-  document.getElementById("list").innerHTML = `
-  <div>わたし</div>
-  <div>あなた</div>
-  <div>あのひと</div>
-  `;
+  // 初回表示
+  showCard();
 
   isReady = true;
 
