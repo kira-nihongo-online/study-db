@@ -497,10 +497,32 @@ async function initApp() {
   // 初回表示
   updateTitle();
 
+  showList();
+
   isReady = true;
 
   document.body.focus();
   window.focus();
+
+  // ==============================
+  // 一覧表示（テスト：1件だけ）
+  // ==============================
+  function showList(){
+
+    if(!cards.length) return;
+
+    const c = cards[0];
+
+    document.getElementById("listBody").innerHTML = `
+      <tr>
+        <td>${c.hira || ""}</td>
+        <td>${c.kanji || ""}</td>
+        <td>${c.thai || ""}</td>
+        <td>${c.eng || ""}</td>
+      </tr>
+    `;
+
+  }
 
   // =========================
   // キーボード
