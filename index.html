@@ -463,6 +463,9 @@ async function initApp() {
 
   document.getElementById("list").style.display = "block";
 
+  // 初回表示
+  updateTitle();
+
   isReady = true;
 
   document.body.focus();
