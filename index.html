@@ -459,34 +459,6 @@ async function showCard(){
   updateTitle();
 
   // =========================
-  // 音声
-  // =========================
-  if(isFirstLoad){
-    isFirstLoad = false;
-  }
-
-  const settings = getSettings();
-
-  // 少し待って画像描画優先
-  await new Promise(r => setTimeout(r, 80));
-
-  if(settings.sound === "on" && !skipVoice){
-
-    if(isFront){
-
-      Voice.speakJP(cards[index].hira || "");
-
-    }else{
-
-      Voice.speakTH(cards[index].thai || "");
-
-    }
-
-  }
-
-  skipVoice = false;
-
-  // =========================
   // 次カード meaning画像先読み
   // =========================
   const nextIndex = (index + 1) % cards.length;
@@ -550,103 +522,6 @@ document.body.addEventListener("click", function(e){
   }
 
   showCard();
-
-});
-
-// ==============================
-// Voice Controller
-// ==============================
-const Voice = (function(){
-
-  let ready = false;
-  let voiceJP = null;
-  let voiceTH = null;
-
-  function init(){
-
-    const setVoices = () => {
-
-      const voices = speechSynthesis.getVoices();
-
-      /*
-      console.log("===== VOICES =====");
-
-      voices.forEach(v => {
-        console.log(v.name, "|", v.lang);
-      });
-      */
-
-
-      voiceJP =
-        voices.find(v => v.name.includes("七海")) ||
-        voices.find(v => v.lang === "ja-JP");
-
-      voiceTH =
-        voices.find(v => v.name.includes("เปรมวดี")) ||
-        voices.find(v => v.lang === "th-TH");
-
-      if(voiceJP || voiceTH){
-        ready = true;
-      }
-
-    };
-
-    setVoices();
-
-    speechSynthesis.onvoiceschanged = setVoices;
-  }
-
-  function speakJP(text){
-    speak(text, voiceJP, "ja-JP");
-  }
-
-  function speakTH(text){
-    speak(text, voiceTH, "th-TH");
-  }
-
-  function speak(text, voice, lang){
-
-    if(!ready) return;
-    if(!text) return;
-
-    speechSynthesis.getVoices();
-
-    const uttr = new SpeechSynthesisUtterance(text);
-
-    uttr.lang = lang;
-
-    uttr.rate = 1;
-    uttr.pitch = 1;
-    uttr.volume = 1;
-
-    if(voice){
-      uttr.voice = voice;
-    }
-
-    speechSynthesis.cancel();
-
-    setTimeout(() => {
-      speechSynthesis.speak(uttr);
-    }, 50);
-
-  }
-
-  return {
-    init,
-    speakJP,
-    speakTH
-  };
-
-})();
-
-// ==============================
-// Voice初期化
-// ==============================
-window.addEventListener("load", async () => {
-
-  Voice.init();
-
-  await new Promise(r => setTimeout(r, 500));
 
 });
 
