@@ -511,7 +511,10 @@ async function initApp() {
 
     const keyword = this.value.trim().toLowerCase();
 
-    console.log(keyword);
+    if(keyword === ""){
+      showList(cards);
+      return;
+    }
 
   });
 
