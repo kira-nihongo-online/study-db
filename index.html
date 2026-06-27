@@ -553,7 +553,7 @@ async function initApp() {
 
       listBody.innerHTML += `
         <tr>
-          <td>${c.hira || ""}</td>
+          <td>${c.displayHira || c.hira || ""}</td>
           <td>${c.kanji || ""}</td>
           <td>${c.thai || ""}</td>
           <td>${c.eng || ""}</td>
