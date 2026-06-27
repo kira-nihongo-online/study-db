@@ -518,18 +518,25 @@ async function initApp() {
 
     console.log(allCards[0]);
 
-    const result = allCards.filter(c => {
+    const result = allCards
+      .filter(c => {
 
-     return (
+        return (
+          String(c.hira  || "").toLowerCase().includes(keyword) ||
+          String(c.kanji || "").toLowerCase().includes(keyword) ||
+          String(c.thai  || "").toLowerCase().includes(keyword) ||
+          String(c.eng   || "").toLowerCase().includes(keyword)
 
-       String(c.hira  || "").toLowerCase().includes(keyword) ||
-       String(c.kanji || "").toLowerCase().includes(keyword) ||
-       String(c.thai  || "").toLowerCase().includes(keyword) ||
-       String(c.eng   || "").toLowerCase().includes(keyword)
+        );
 
-     );
+      })
+      .map(c => ({
 
-    });
+        ...c,
+
+        displayHira: `【${c.lesson}】 ${c.hira}`
+
+      }));
 
     showList(result);
 
