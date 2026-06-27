@@ -261,7 +261,9 @@ body{
   </div>
 
 <script>
+let allCards = [];
 let cards = [];
+
 let index = 0;
 let isFront = true;
 
@@ -441,7 +443,8 @@ async function initApp() {
 
   const data = await response.json();
 
-  cards = data || [];
+  allCards = data || [];
+  cards = [...allCards];
 
   const lesson = getLesson();
 
@@ -502,6 +505,16 @@ async function initApp() {
 
   showList();
 
+  const searchBox = document.getElementById("searchBox");
+
+  searchBox.addEventListener("input", function(){
+
+    const keyword = this.value.trim().toLowerCase();
+
+    console.log(keyword);
+
+  });
+
   isReady = true;
 
   document.body.focus();
@@ -510,13 +523,13 @@ async function initApp() {
   // ==============================
   // 一覧表示
   // ==============================
-  function showList(){
+  function showList(list = cards){
 
     const listBody = document.getElementById("listBody");
 
     listBody.innerHTML = "";
 
-    cards.forEach(c => {
+    list.forEach(c => {
 
       listBody.innerHTML += `
         <tr>
