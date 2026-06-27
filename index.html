@@ -138,6 +138,22 @@ body{
   align-items:center;
 }
 
+#searchBox{
+  margin-left:40px;
+
+  width:280px;
+  height:34px;
+
+  padding:0 12px;
+
+  font-size:15px;
+
+  border:1px solid #ccc;
+  border-radius:6px;
+
+  outline:none;
+}
+
 #header-left{
   flex: 0 0 auto;
 }
@@ -219,8 +235,15 @@ body{
 
   <div id="header-left">
     <img id="headerLogo">
+
     <span id="title"></span>
+
     <button id="settingBtn">⚙</button>
+
+    <input
+      type="text"
+      id="searchBox"
+      placeholder="🔍 検索">
   </div>
 
 </div>
