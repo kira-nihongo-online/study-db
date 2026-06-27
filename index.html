@@ -586,6 +586,10 @@ async function initApp() {
 
     if(e.key === "Backspace"){
 
+    if (document.activeElement === searchBox) {
+      return;
+    }
+
       e.preventDefault();
 
       if(isFront){
