@@ -516,6 +516,19 @@ async function initApp() {
       return;
     }
 
+    const result = allCards.filter(c => {
+
+      return (
+        (c.hira  || "").toLowerCase().includes(keyword) ||
+        (c.kanji || "").toLowerCase().includes(keyword) ||
+        (c.thai  || "").toLowerCase().includes(keyword) ||
+        (c.eng   || "").toLowerCase().includes(keyword)
+      );
+
+    });
+
+    showList(result);
+
   });
 
   isReady = true;
