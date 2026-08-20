@@ -359,7 +359,7 @@ async function initApp() {
 
   const lesson = getLesson();
 
-  if (lesson) {
+  if (lesson && lesson !== "0") {
 
     cards = cards.filter(
       c => String(c.lessonNo) === String(lesson)
