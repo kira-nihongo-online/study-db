@@ -318,6 +318,11 @@ function updateTitle() {
 
   const titleEl = document.getElementById("title");
 
+  if (getLesson() === "0") {
+    titleEl.textContent = "Study DB";
+    return;
+  }
+
   if (!cards.length) {
     titleEl.textContent = "Study DB";
     return;
