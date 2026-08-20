@@ -406,7 +406,9 @@ async function initApp() {
   // 初回表示
   updateTitle();
 
-  showList();
+  if (lesson !== "0") {
+    showList();
+  }
 
   const searchBox = document.getElementById("searchBox");
 
